@@ -1,11 +1,58 @@
 @import 'tailwindcss';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
+@source '../**/*.jsx';
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+    /* Primary - Indigo */
+    --color-primary: oklch(0.585 0.233 277.117);
+    --color-primary-foreground: oklch(0.985 0.002 247.858);
+
+    /* Backgrounds */
+    --color-background: oklch(0.145 0.014 254.604);
+    --color-foreground: oklch(0.985 0.002 247.858);
+
+    /* Card */
+    --color-card: oklch(0.205 0.015 254.604);
+    --color-card-foreground: oklch(0.985 0.002 247.858);
+
+    /* Muted */
+    --color-muted: oklch(0.269 0.015 254.604);
+    --color-muted-foreground: oklch(0.648 0.022 264.436);
+
+    /* Accent */
+    --color-accent: oklch(0.269 0.015 254.604);
+    --color-accent-foreground: oklch(0.985 0.002 247.858);
+
+    /* Border */
+    --color-border: oklch(0.324 0.022 264.436);
+    --color-input: oklch(0.324 0.022 264.436);
+    --color-ring: oklch(0.585 0.233 277.117);
+
+    /* Secondary */
+    --color-secondary: oklch(0.269 0.015 254.604);
+    --color-secondary-foreground: oklch(0.985 0.002 247.858);
+
+    /* Destructive */
+    --color-destructive: oklch(0.577 0.245 27.325);
+
+    /* Success */
+    --color-success: oklch(0.723 0.219 149.579);
+
+    /* Warning */
+    --color-warning: oklch(0.768 0.188 70.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: oklch(0.205 0.015 254.604); }
+::-webkit-scrollbar-thumb { background: oklch(0.379 0.022 264.436); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: oklch(0.488 0.022 264.436); }
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
 }
