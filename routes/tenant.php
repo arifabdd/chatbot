@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', TenantScope::class])->prefix('panel')->name('panel.')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::get('/settings', [SettingsController::class, '__invoke'])->name('settings');
+    Route::post('/settings/ai', [SettingsController::class, 'updateAi'])->name('settings.ai.update');
     Route::resource('faqs', FaqController::class);
     Route::resource('channels', ChannelController::class)->except(['edit', 'update', 'show']);
     Route::patch('channels/{channel}/toggle', [ChannelController::class, 'toggle'])->name('channels.toggle');

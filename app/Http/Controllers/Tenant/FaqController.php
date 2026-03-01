@@ -43,7 +43,7 @@ class FaqController extends Controller
         $tenant = app('currentTenant');
 
         $validated = $request->validate([
-            'faq_category_id' => 'required|exists:faq_categories,id',
+            'faq_category_id' => 'nullable|exists:faq_categories,id',
             'question' => 'required|string|max:1000',
             'answer' => 'required|string|max:5000',
             'keywords' => 'nullable|array',
@@ -71,7 +71,7 @@ class FaqController extends Controller
         abort_if($faq->tenant_id !== $tenant->id, 403);
 
         $validated = $request->validate([
-            'faq_category_id' => 'required|exists:faq_categories,id',
+            'faq_category_id' => 'nullable|exists:faq_categories,id',
             'question' => 'required|string|max:1000',
             'answer' => 'required|string|max:5000',
             'keywords' => 'nullable|array',

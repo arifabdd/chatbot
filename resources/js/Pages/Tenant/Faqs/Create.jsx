@@ -25,9 +25,10 @@ export default function Create({ categories }) {
             <div className="mx-auto max-w-2xl">
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                        <label className="text-sm font-medium">Kateqoriya</label>
+                        <label className="text-sm font-medium">Kateqoriya (İstəyə görə)</label>
                         <select value={data.faq_category_id} onChange={(e) => setData('faq_category_id', e.target.value)}
                             className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                            <option value="">Seçilməyib</option>
                             {(categories ?? []).map((cat) => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
                         </select>
                         {errors.faq_category_id && <p className="text-sm text-destructive">{errors.faq_category_id}</p>}
