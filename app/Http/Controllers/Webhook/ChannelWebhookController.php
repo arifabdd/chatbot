@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Webhook;
 use App\Http\Controllers\Controller;
 use App\Models\Tenant;
 use App\Services\Channel\ChannelManager;
+use App\Jobs\ProcessIncomingMessage;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -51,7 +52,7 @@ class ChannelWebhookController extends Controller
             $parsedMessage = $channelDriver->parseWebhook($request);
 
             // Dispatch to queue for processing
-            // ProcessIncomingMessage::dispatch($channel, $parsedMessage);
+            ProcessIncomingMessage::dispatch($channel, $parsedMessage);
 
             return response('OK', 200);
         } catch (\Exception $e) {

@@ -21,14 +21,11 @@ class Channel extends Model
         'webhook_secret',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'credentials' => 'encrypted:array',
-            'settings' => 'array',
-            'is_active' => 'boolean',
-        ];
-    }
+    protected $casts = [
+        'credentials' => 'encrypted:array',
+        'settings' => 'array',
+        'is_active' => 'boolean',
+    ];
 
     // ── Relationships ────────────────────────────────────
 

@@ -55,4 +55,23 @@ class Conversation extends Model
     {
         $this->update(['status' => 'closed']);
     }
+
+    /**
+     * Get recent messages formatted for AI providers.
+     */
+    public function getAiChatHistory(int $limit = 10): array
+    {
+        return $this->messages()
+            ->latest()
+            ->limit($limit)
+            ->get()
+            ->reverse()
+            ->map(function ($message) {
+                return [
+                    'role' => $message->direction === 'incoming' ? 'user' : 'assistant',
+                    'content' => $message->content,
+                ];
+            })
+            ->toArray();
+    }
 }

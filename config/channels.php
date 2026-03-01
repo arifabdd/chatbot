@@ -18,8 +18,8 @@ return [
     */
 
     'drivers' => [
-        // 'whatsapp' => \App\Services\Channel\Drivers\WhatsAppDriver::class,
-        // 'telegram' => \App\Services\Channel\Drivers\TelegramDriver::class,
+        'whatsapp' => \App\Services\Channel\Drivers\WhatsAppDriver::class,
+        'telegram' => \App\Services\Channel\Drivers\TelegramDriver::class,
     ],
 
 ];

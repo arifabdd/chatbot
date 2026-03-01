@@ -29,7 +29,7 @@ return [
     */
 
     'providers' => [
-        // 'openai' => \App\Services\AI\Drivers\OpenAIDriver::class,
+        'openai' => \App\Services\AI\Drivers\OpenAIDriver::class,
         // 'claude' => \App\Services\AI\Drivers\ClaudeDriver::class,
     ],
 
