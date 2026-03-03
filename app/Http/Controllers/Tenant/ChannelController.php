@@ -21,8 +21,9 @@ class ChannelController extends Controller
         ]);
     }
 
-    public function create(ChannelManager $channelManager)
+    public function create()
     {
+        $channelManager = app(ChannelManager::class);
         return Inertia::render('Tenant/Channels/Create', [
             'availableDrivers' => $channelManager->getAvailableDrivers(),
         ]);

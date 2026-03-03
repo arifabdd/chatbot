@@ -44,11 +44,20 @@ class FaqController extends Controller
 
         $validated = $request->validate([
             'faq_category_id' => 'nullable|exists:faq_categories,id',
+            'new_category_name' => 'nullable|string|max:255',
             'question' => 'required|string|max:1000',
             'answer' => 'required|string|max:5000',
             'keywords' => 'nullable|array',
             'is_active' => 'boolean',
         ]);
+
+        if ($request->filled('new_category_name')) {
+            $category = $tenant->faqCategories()->create([
+                'name' => $request->new_category_name,
+                'tenant_id' => $tenant->id,
+            ]);
+            $validated['faq_category_id'] = $category->id;
+        }
 
         $validated['tenant_id'] = $tenant->id;
         Faq::create($validated);
@@ -72,11 +81,20 @@ class FaqController extends Controller
 
         $validated = $request->validate([
             'faq_category_id' => 'nullable|exists:faq_categories,id',
+            'new_category_name' => 'nullable|string|max:255',
             'question' => 'required|string|max:1000',
             'answer' => 'required|string|max:5000',
             'keywords' => 'nullable|array',
             'is_active' => 'boolean',
         ]);
+
+        if ($request->filled('new_category_name')) {
+            $category = $tenant->faqCategories()->create([
+                'name' => $request->new_category_name,
+                'tenant_id' => $tenant->id,
+            ]);
+            $validated['faq_category_id'] = $category->id;
+        }
 
         $faq->update($validated);
         return redirect()->route('panel.faqs.index')->with('success', 'FAQ yeniləndi.');

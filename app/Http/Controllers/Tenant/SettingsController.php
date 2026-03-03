@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         $user = $request->user();
         $tenant = $user->tenant;
@@ -21,6 +21,14 @@ class SettingsController extends Controller
                 'status' => $tenant->status,
                 'ai_config' => $tenant->ai_config,
             ] : null,
+        ]);
+    }
+
+    public function aiSettings(Request $request)
+    {
+        $tenant = app('currentTenant');
+        return Inertia::render('Tenant/Settings/AiSettings', [
+            'ai_config' => $tenant->ai_config,
         ]);
     }
 

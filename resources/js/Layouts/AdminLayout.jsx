@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
-import { LayoutDashboard, Building2, Brain, CreditCard, FileText, Users, Settings, ChevronLeft, LogOut, Bot } from 'lucide-react';
+import { LayoutDashboard, Building2, Brain, CreditCard, FileText, Users, Settings, ChevronLeft, LogOut, Bot, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const superAdminNav = [
@@ -12,7 +12,10 @@ const superAdminNav = [
 const tenantAdminNav = [
     { name: 'Dashboard', href: '/panel/dashboard', icon: LayoutDashboard },
     { name: 'FAQ', href: '/panel/faqs', icon: FileText },
+    { name: 'Söhbətlər', href: '/panel/conversations', icon: MessageSquare },
+    { name: 'Kontaktlar', href: '/panel/contacts', icon: Users },
     { name: 'Kanallar', href: '/panel/channels', icon: Bot },
+    { name: 'AI Tənzimləmələri', href: '/panel/ai-settings', icon: Brain },
     { name: 'Tənzimləmələr', href: '/panel/settings', icon: Settings },
 ];
 
