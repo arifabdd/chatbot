@@ -32,7 +32,7 @@ class ChannelWebhookController extends Controller
 
         // Check if the driver is registered
         if (!$this->channelManager->hasDriver($driver)) {
-            Log::warning("Webhook received for unregistered driver: {$driver}");
+            Log::error("Webhook 404 Error: Driver '{$driver}' is NOT registered in config/channels.php");
             return response('Unknown driver', 404);
         }
 
@@ -43,7 +43,7 @@ class ChannelWebhookController extends Controller
             ->first();
 
         if (!$channel) {
-            Log::warning("Webhook received for inactive or missing channel: {$driver} / tenant: {$tenant->slug}");
+            Log::error("Webhook 404 Error: Active channel NOT found for tenant: {$tenant->slug}, driver: {$driver}. (Database check required)");
             return response('Channel not found', 404);
         }
 
