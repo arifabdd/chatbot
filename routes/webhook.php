@@ -19,6 +19,11 @@ Route::prefix('webhook')->name('webhook.')->group(function () {
     Route::post('/{driver}/{tenant:slug}', [\App\Http\Controllers\Webhook\ChannelWebhookController::class, 'handle'])
         ->name('handle');
 
+    // DEBUG: Test if the prefix works
+    Route::get('/test', function () {
+        return response()->json(['message' => 'Webhook path is accessible']);
+    });
+
     // GET: Webhook verification (WhatsApp, etc.)
     Route::get('/{driver}/{tenant:slug}', [\App\Http\Controllers\Webhook\ChannelWebhookController::class, 'verify'])
         ->name('verify');

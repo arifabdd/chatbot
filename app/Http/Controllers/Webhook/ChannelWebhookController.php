@@ -23,6 +23,13 @@ class ChannelWebhookController extends Controller
      */
     public function handle(Request $request, string $driver, Tenant $tenant): Response
     {
+        Log::debug("Webhook request received", [
+            'driver' => $driver,
+            'tenant' => $tenant->slug,
+            'ip' => $request->ip(),
+            'payload' => $request->all()
+        ]);
+
         // Check if the driver is registered
         if (!$this->channelManager->hasDriver($driver)) {
             Log::warning("Webhook received for unregistered driver: {$driver}");
