@@ -17,7 +17,7 @@ class OpenAIDriver implements AIProviderContract
 
     public function getDisplayName(): string
     {
-        return 'OpenAI (GPT-4 / GPT-3.5)';
+        return 'OpenAI (GPT)';
     }
 
     public function chat(array $messages, array $config = []): array

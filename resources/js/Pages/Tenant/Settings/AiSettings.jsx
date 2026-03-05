@@ -24,7 +24,7 @@ export default function AiSettings({ ai_config }) {
         <AdminLayout title="AI Tənzimləmələri">
             <Head title="AI Tənzimləmələri" />
 
-            <div className="mx-auto max-w-3xl space-y-6 pb-20">
+            <div className="space-y-6 pb-20">
                 <div className="rounded-xl border border-border bg-card p-6 shadow-sm overflow-hidden relative">
                     <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
                     <div className="mb-6 flex items-center justify-between">
@@ -43,18 +43,15 @@ export default function AiSettings({ ai_config }) {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">Provider</label>
-                                <select className="w-full bg-background border border-input rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none" value={data.provider} onChange={e => setData('provider', e.target.value)}>
-                                    <option value="openai">OpenAI</option>
-                                    <option value="claude" disabled>Claude (Tezliklə)</option>
-                                </select>
+                                <div className="w-full bg-muted/50 border border-input rounded-lg px-3 py-2 text-sm text-muted-foreground uppercase font-medium">
+                                    {data.provider}
+                                </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">Model</label>
-                                <select className="w-full bg-background border border-input rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none" value={data.model} onChange={e => setData('model', e.target.value)}>
-                                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
-                                    <option value="gpt-4o">GPT-4o (Tövsiyə olunur)</option>
-                                    <option value="gpt-4-turbo">GPT-4 Turbo</option>
-                                </select>
+                                <div className="w-full bg-muted/50 border border-input rounded-lg px-3 py-2 text-sm text-muted-foreground font-mono">
+                                    {data.model}
+                                </div>
                             </div>
                         </div>
 
